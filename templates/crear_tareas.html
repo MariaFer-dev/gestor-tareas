@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ 'Editar tarea' if tarea else 'Nueva tarea' }}
+{% endblock %}
+
+{% block content %}
+
+<div class="form-shell mx-auto">
+	<div class="card app-card shadow-sm">
+		<div class="card-body p-4 p-lg-5">
+			<p class="eyebrow mb-1">Formulario de tareas</p>
+			<h1 class="h4 mb-4">{{ 'Editar tarea' if tarea else 'Crear tarea' }}</h1>
+
+			{% if proyectos and usuarios %}
+			<form method="POST" class="row g-3">
+				<div class="col-12">
+					<label class="form-label">Título</label>
+					<input type="text" name="titulo" class="form-control form-control-lg" value="{{ tarea.titulo if tarea else '' }}" required>
+				</div>
+
+				<div class="col-12">
+					<label class="form-label">Descripción</label>
+					<textarea name="descripcion" class="form-control" rows="4" required>{{ tarea.descripcion if tarea else '' }}</textarea>
+				</div>
+
+				<div class="col-md-4">
+					<label class="form-label">Prioridad</label>
+					<select name="prioridad" class="form-select" required>
+						{% set prioridad_actual = tarea.prioridad if tarea else 'Media' %}
+						{% for opcion in ['Alta', 'Media', 'Baja'] %}
+						<option value="{{ opcion }}" {% if prioridad_actual == opcion %}selected{% endif %}>{{ opcion }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="col-md-4">
+					<label class="form-label">Estado</label>
+					<select name="estado" class="form-select" required>
+						{% set estado_actual = tarea.estado if tarea else 'Pendiente' %}
+						{% for opcion in ['Pendiente', 'En progreso', 'Completada'] %}
+						<option value="{{ opcion }}" {% if estado_actual == opcion %}selected{% endif %}>{{ opcion }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="col-md-4">
+					<label class="form-label">Fecha límite</label>
+					<input type="date" name="fecha_limite" class="form-control" value="{{ tarea.fecha_limite.isoformat() if tarea and tarea.fecha_limite else '' }}">
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Proyecto</label>
+					<select name="proyecto_id" class="form-select" required>
+						<option value="">Selecciona un proyecto</option>
+						{% for proyecto in proyectos %}
+						<option value="{{ proyecto.id }}" {% if tarea and tarea.proyecto_id == proyecto.id %}selected{% endif %}>{{ proyecto.nombre }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="col-md-6">
+					<label class="form-label">Usuario asignado</label>
+					<select name="usuario_id" class="form-select" required>
+						<option value="">Selecciona un usuario</option>
+						{% for usuario in usuarios %}
+						<option value="{{ usuario.id }}" {% if tarea and tarea.usuario_id == usuario.id %}selected{% endif %}>{{ usuario.nombre }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="col-12 d-flex gap-2">
+					<button class="btn btn-primary">Guardar</button>
+					<a href="{{ url_for('tareas') }}" class="btn btn-outline-secondary">Cancelar</a>
+				</div>
+			</form>
+			{% else %}
+			<div class="alert alert-warning mb-0">
+				Necesitas al menos un proyecto y un usuario registrado para crear tareas.
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

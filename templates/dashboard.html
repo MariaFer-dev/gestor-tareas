@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="hero-panel mb-4 mb-lg-5">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <h1 class="display-6 fw-semibold mb-3">Panel de control para proyectos y tareas</h1>
+        </div>
+        <div class="col-lg-5">
+            <div class="quick-stats">
+                <div class="stat-box">
+                    <span>Proyectos</span>
+                    <strong>{{ total_proyectos }}</strong>
+                </div>
+                <div class="stat-box">
+                    <span>Tareas</span>
+                    <strong>{{ total_tareas }}</strong>
+                </div>
+                <div class="stat-box">
+                    <span>Completadas</span>
+                    <strong>{{ completadas }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 g-lg-4 mb-4">
+    <div class="col-md-4">
+        <div class="dashboard-card">
+            <span class="card-label">Pendientes</span>
+            <h2>{{ pendientes }}</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dashboard-card">
+            <span class="card-label">En progreso</span>
+            <h2>{{ en_progreso }}</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dashboard-card">
+            <span class="card-label">Completadas</span>
+            <h2>{{ completadas }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="card app-card shadow-sm">
+    <div class="card-body p-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <h3 class="h5 mb-0">Últimas tareas</h3>
+            <a class="btn btn-sm btn-primary" href="{{ url_for('nueva_tarea') }}">Nueva tarea</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Tarea</th>
+                        <th>Proyecto</th>
+                        <th>Estado</th>
+                        <th>Prioridad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarea in ultimas_tareas %}
+                    <tr>
+                        <td>{{ tarea.titulo }}</td>
+                        <td>{{ tarea.proyecto.nombre if tarea.proyecto else '-' }}</td>
+                        <td><span class="badge text-bg-info">{{ tarea.estado }}</span></td>
+                        <td>{{ tarea.prioridad }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-secondary py-4">Aún no hay tareas registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

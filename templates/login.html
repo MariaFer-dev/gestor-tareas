@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Iniciar sesión
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-shell">
+	<div class="auth-copy">
+		<p class="eyebrow mb-2">Bienvenido</p>
+		<h1 class="display-6 fw-semibold mb-3">Administra tareas con una interfaz limpia y rápida</h1>
+		<p class="text-secondary mb-0">Accede para crear proyectos, asignar tareas y revisar el progreso desde cualquier navegador.</p>
+	</div>
+
+	<div class="card app-card shadow-sm auth-card">
+		<div class="card-body p-4 p-lg-5">
+			<h2 class="h4 mb-4">Iniciar sesión</h2>
+
+			<form method="POST" class="row g-3">
+				<div class="col-12">
+					<label class="form-label">Correo</label>
+					<input type="email" name="email" class="form-control form-control-lg" required>
+				</div>
+				<div class="col-12">
+					<label class="form-label">Contraseña</label>
+					<input type="password" name="password" class="form-control form-control-lg" required>
+				</div>
+				<div class="col-12 d-grid">
+					<button class="btn btn-primary btn-lg">Entrar</button>
+				</div>
+				<div class="col-12 text-center">
+					<a href="{{ url_for('register') }}">Crear cuenta nueva</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

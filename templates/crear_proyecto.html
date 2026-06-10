@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ titulo }}
+{% endblock %}
+
+{% block content %}
+
+<div class="form-shell mx-auto">
+    <div class="card app-card shadow-sm">
+        <div class="card-body p-4 p-lg-5">
+            <p class="eyebrow mb-1">Formulario de proyecto</p>
+            <h1 class="h4 mb-4">{{ titulo }}</h1>
+
+            <form method="POST" class="row g-3">
+                <div class="col-12">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" name="nombre" class="form-control form-control-lg" value="{{ proyecto.nombre if proyecto else '' }}" required>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Descripción</label>
+                    <textarea name="descripcion" class="form-control" rows="5" required>{{ proyecto.descripcion if proyecto else '' }}</textarea>
+                </div>
+
+                <div class="col-12 d-flex gap-2">
+                    <button class="btn btn-primary">Guardar</button>
+                    <a href="{{ url_for('proyectos') }}" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

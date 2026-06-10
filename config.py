@@ -15,6 +15,12 @@ class Config:
             "postgresql+psycopg2://",
             1
         )
+    elif database_url.startswith("postgresql://"):
+        database_url = database_url.replace(
+            "postgresql://",
+            "postgresql+psycopg2://",
+            1
+        )
 
     SQLALCHEMY_DATABASE_URI = database_url
 

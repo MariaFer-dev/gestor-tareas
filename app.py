@@ -37,6 +37,17 @@ with app.app_context():
     db.create_all()
 
 
+@app.route("/init")
+def init_db():
+    """Inicializa la base de datos creando todas las tablas."""
+    try:
+        with app.app_context():
+            db.create_all()
+        return {"status": "success", "message": "Tablas creadas correctamente"}, 200
+    except Exception as e:
+        return {"status": "error", "message": str(e)}, 500
+
+
 @app.route("/")
 def inicio():
     if current_user.is_authenticated:

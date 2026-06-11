@@ -61,11 +61,11 @@ python app.py
 
 
 - Pantalla de login
-- ![Pantalla de login](images/image1.png)
+ ![Pantalla de login](images/image1.png)
 - Dashboard principal
-- ![Dashboard principal](images/image2.png)
+ ![Dashboard principal](images/image2.png)
 - Listado de proyectos
-- ![listado de proyectos](images/image3.png)
+ ![listado de proyectos](images/image3.png)
 - Listado de tareas
-- ![listado de tareas](images/image.png)
+  ![listado de tareas](images/image.png)
 

@@ -32,7 +32,7 @@ Aplicación web CRUD desarrollada con Flask, SQLAlchemy y PostgreSQL online para
 
 La opción más simple para este proyecto es PostgreSQL en Supabase.
 
-1. Crea una cuenta en [Supabase](https://supabase.com/).
+1. Crea una cuenta en NEON.
 2. Crea un nuevo proyecto.
 3. Ve a la sección de configuración de base de datos.
 4. Copia la cadena de conexión PostgreSQL.
@@ -57,10 +57,15 @@ python app.py
 4. Vercel usará `api/index.py` como entrada de la aplicación.
 5. Revisa la URL pública generada por Vercel y agrégala a este README.
 
-## Capturas sugeridas para el informe
+## Capturas
+
 
 - Pantalla de login
+- ![Pantalla de login](images/image1.png)
 - Dashboard principal
+- ![Dashboard principal](images/image2.png)
 - Listado de proyectos
-- Listado de tareas con filtros
-- Formularios de creación y edición
+- ![listado de proyectos](images/image3.png)
+- Listado de tareas
+- ![listado de tareas](images/image.png)
+

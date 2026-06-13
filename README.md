@@ -30,13 +30,13 @@ Aplicación web CRUD desarrollada con Flask, SQLAlchemy y PostgreSQL online para
 
 ## Paso a paso para crear la base de datos online
 
-La opción más simple para este proyecto es PostgreSQL en Supabase.
+La opción más simple para este proyecto es PostgreSQL en neon.
 
 1. Crea una cuenta en NEON.
 2. Crea un nuevo proyecto.
 3. Ve a la sección de configuración de base de datos.
 4. Copia la cadena de conexión PostgreSQL.
-5. Crea estas variables de entorno:
+5. Crear estas variables de entorno:
 
 ```env
 SECRET_KEY=una_clave_segura
@@ -55,7 +55,7 @@ python app.py
 2. Conecta el repositorio a Vercel.
 3. Agrega las variables de entorno `SECRET_KEY` y `DATABASE_URL`.
 4. Vercel usará `api/index.py` como entrada de la aplicación.
-5. Revisa la URL pública generada por Vercel y agrégala a este README.
+
 
 ## Capturas
 
